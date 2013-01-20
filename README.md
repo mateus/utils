@@ -1,0 +1,4 @@
+utils
+=====
+
+Códigos úteis.
