@@ -13,14 +13,14 @@ args = parser.parse_args()
 
 try:
     with open(args.inputfile, 'r') as f:
-        html_string = f.read()
-        html_string = re.sub(">\s*<","><", html_string)
+        html = f.read()
+        html = re.sub(">\s*<","><", html)
         if args.outputfile:
             outputFileName = args.outputfile
         else:
-            outputFileName = '{}_result.html'.format(args.inputfile)
+            outputFileName = '{}_res.html'.format(args.inputfile.split('.')[0])
         with open(outputFileName, 'w') as o:
-            o.write(html_string)
+            o.write(html)
         print 'Arquivo {} criado com sucesso.'.format(outputFileName)
 except IOError:
     print 'Arquivo de entrada não encontrado.'
