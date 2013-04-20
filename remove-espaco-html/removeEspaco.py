@@ -7,14 +7,17 @@ import argparse
 import re
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-i', dest='inputfile', help='Nome do arquivo de entrada (Requerido)', required = True)
+parser.add_argument('-i', dest='inputfile', help='Nome do arquivo de entrada (Requerido)', required=True)
 parser.add_argument('-o', dest='outputfile', help='Nome do arquivo de destino')
+parser.add_argument('-c', dest='comments', help='Remove comentários', action="store_true")
 args = parser.parse_args()
 
 try:
     with open(args.inputfile, 'r') as f:
         html = f.read()
-        html = re.sub(">\s*<","><", html)
+        if args.comments:
+            html = re.sub('<!--.*?-->','', html)
+        html = re.sub('>\s*<','><', html)
         if args.outputfile:
             outputFileName = args.outputfile
         else:
