@@ -9,7 +9,7 @@ import re
 parser = argparse.ArgumentParser()
 parser.add_argument('-i', dest='inputfile', help='Nome do arquivo de entrada (Requerido)', required=True)
 parser.add_argument('-o', dest='outputfile', help='Nome do arquivo de destino')
-parser.add_argument('-c', dest='comments', help='Remove comentários', action="store_true")
+parser.add_argument('-c', dest='comments', help='Remove comentários HTML', action="store_true")
 args = parser.parse_args()
 
 try:
@@ -27,3 +27,4 @@ try:
         print 'Arquivo {} criado com sucesso.'.format(outputFileName)
 except IOError:
     print 'Arquivo de entrada não encontrado.'
+
